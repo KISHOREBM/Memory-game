@@ -84,17 +84,23 @@ const Memorygame = () => {
     initilizegame();
   },[gridsize]);
   return (
-    <div className='flex flex-col items-center justify-center mig-h-screen bg-gray-100 p-4'>
+    <div className='w-full h-screen bg-[#510ca0] flex justify-center items-center'>
+      <div className='flex flex-col items-center justify-center  bg-gray-200 p-4 w-[600px] '>
       <h1 className='text-3xl font-bold mb-6'>Memory game</h1>
-      <div className='mb-4 '>
-        <label htmlFor="" className='mr-2'>Grid Size:</label>
+      <div className='mb-4 flex flex-wrap '>
+      <div className='flex w-full justify-center items-center gap-4 '>
+        <div><label htmlFor="" className='mr-2'>Grid Size:</label>
         <input type="number" id='gridSize' min={2} max={10} value={gridsize} onChange={handlechange}
-        className='border-2 border-gray-300 rounded px-2 py-1'
-        />
+        className='border-2 border-gray-300 rounded px-2 py-1 bg-transparent border-none'/>
+        </div>
+        <div>
         <label htmlFor="">Max Moves:</label>
         <input type="number"id='Maxmoves' min={0} max={10} value={moves} onChange={(e)=>{setmoves(e.target.value)}}
-        className='border-2 border-gray-300 rounded px-2 py-1' />
-        <div>current moves = {limit}</div>
+        className='border-2 border-gray-300 rounded px-2 py-1 bg-transparent border-none'  />
+        </div> 
+        </div>
+        <div className='w-full flex justify-center items-center'>current moves = {limit}</div>
+        
       </div>
       <div className={`grid gap-2 mb-4`} style={{gridTemplateColumns:`repeat(${gridsize},minmax(0,1fr))`, width:`min(100%, ${gridsize * 5.5}rem)`}} >
         {cards.map((card)=>{
@@ -111,6 +117,8 @@ const Memorygame = () => {
         {won || lost ?"play Again": "Reset"}
         
       </button>
+    </div>
+    
     </div>
   )
 }
